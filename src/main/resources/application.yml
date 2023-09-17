@@ -2,6 +2,8 @@ spring:
   jpa:
     database-platform: org.hibernate.community.dialect.SQLiteDialect
   datasource:
+    driver : org.sqlite.JDBC
     driver-class-name: org.sqlite.JDBC
     url: jdbc:sqlite:practice.db
-    mapper-locations : classpath:/mapper/**/*.xml
+    #jdbc-url: jdbc:sqlite:practice.db
+    #mapper-locations : classpath:/mapper/**/*Mapper.xml

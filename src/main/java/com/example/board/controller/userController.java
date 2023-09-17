@@ -16,19 +16,17 @@ public class userController {
 
     @PostMapping("/signup")
     public String signup(@RequestBody UserVo userVo){
-        userService.insertUser(userVo);
-        return "";
+        System.out.println(userVo.getUserId());
+        return userService.insertUser(userVo);
     }
 
     @PostMapping("/login")
     public String login(@RequestBody LoginVo loginVo){
-
-        return "";
+        return userService.login(loginVo);
     }
 
-    @GetMapping("/userInfo")
-    public String userInfo(String userId){
-
-        return "";
+    @GetMapping("/allUserInfo")
+    public String allUserInfo(){
+        return userService.getAllUserInfo();
     }
 }

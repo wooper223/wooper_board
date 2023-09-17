@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-///ß@Configuration
+//@Configuration
 @MapperScan(value = "com.example.board", sqlSessionFactoryRef = "SqlSessionFactory")
 public class MyBatisConfig {
 

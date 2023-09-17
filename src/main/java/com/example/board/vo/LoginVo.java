@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class LoginVo {
-    private String user_id;
+    private String userId;
 
     private String password;
 }

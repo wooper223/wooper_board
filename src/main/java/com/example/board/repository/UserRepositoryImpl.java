@@ -7,8 +7,8 @@ import java.util.Optional;
 
 @Repository
 public class UserRepositoryImpl implements CustomUserRepository {
-    public Optional<User> findByUserId(String userId){
-        return null;
-    }
+    //public Optional<User> findByUserId(String userId){
+    //    return null;
+    //}
 
 }
