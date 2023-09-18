@@ -1,8 +1,11 @@
 package com.example.board.controller;
 
+import com.example.board.entity.User;
 import com.example.board.service.UserService;
 import com.example.board.vo.LoginVo;
 import com.example.board.vo.UserVo;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +24,13 @@ public class userController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginVo loginVo){
-        return userService.login(loginVo);
+    public String login(LoginVo loginVo, HttpServletRequest request){
+        return userService.login(loginVo, request);
+    }
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request){
+        return userService.logout(request);
     }
 
     @GetMapping("/allUserInfo")

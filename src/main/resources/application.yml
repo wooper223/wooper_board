@@ -7,3 +7,8 @@ spring:
     url: jdbc:sqlite:practice.db
     #jdbc-url: jdbc:sqlite:practice.db
     #mapper-locations : classpath:/mapper/**/*Mapper.xml
+
+server:
+  servlet:
+    session:
+      timeout: 60

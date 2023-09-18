@@ -4,6 +4,8 @@ import com.example.board.entity.User;
 import com.example.board.repository.UserRepository;
 import com.example.board.vo.LoginVo;
 import com.example.board.vo.UserVo;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,14 +31,31 @@ public class UserService {
         }
     }
 
-    public String login(LoginVo loginVo){
+    public String login(LoginVo loginVo, HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if(session != null){
+            return "Fail : already login";
+        }
         Optional<User> user = userRepository.findByUserId(loginVo.getUserId());
         if(user.isPresent()){
-            if(user.get().getPassword().equals(loginVo.getPassword()))
+            if(user.get().getPassword().equals(loginVo.getPassword())) {
+                session = request.getSession();
+                session.setAttribute("user", user.get());
                 return "Success";
+            }
             return "Fail : wrong password";
         }
         return "Fail : wrong id";
+    }
+
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if(session != null){
+            session.invalidate();
+            return "Success";
+        } else {
+            return "Fail : No Session";
+        }
     }
 
     public String getAllUserInfo(){
