@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
-public class userController {
+public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
